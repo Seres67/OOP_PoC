@@ -16,6 +16,12 @@ void character_set_defense(struct character_t *character, const int64_t defense)
 
 void character_set_type(struct character_t *character, const enum CharacterType type) { character->_type = type; }
 
+void character_attack(struct character_t *character, struct character_t *to_attack)
+{
+    to_attack->set_health(to_attack, to_attack->get_health(to_attack) - character->get_strength(character) -
+                                         to_attack->get_defense(to_attack));
+}
+
 Character character_new(const char *name, const int64_t health, const int64_t strength, const int64_t defense,
                         enum CharacterType type)
 {
@@ -31,5 +37,6 @@ Character character_new(const char *name, const int64_t health, const int64_t st
                        character_set_health,
                        character_set_strength,
                        character_set_defense,
-                       character_set_type};
+                       character_set_type,
+                       character_attack};
 }

@@ -30,6 +30,8 @@ typedef struct character_t
     void (*set_strength)(struct character_t *character, const int64_t strength);
     void (*set_defense)(struct character_t *character, const int64_t defense);
     void (*set_type)(struct character_t *character, enum CharacterType type);
+
+    void (*attack)(struct character_t *character, struct character_t *to_attack);
 } Character;
 
 Character character_new(const char *name, int64_t health, int64_t strength, int64_t defense, enum CharacterType type);
